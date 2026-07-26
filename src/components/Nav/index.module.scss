@@ -1,0 +1,64 @@
+.appBar {
+  background: transparent;
+  border-bottom: none;
+  transition: all 0.35s ease;
+}
+
+.appBarScrolled {
+  background: rgba(10, 15, 30, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--divider);
+}
+
+.toolbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 24px;
+
+  @media (min-width: 900px) {
+    padding: 0 32px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.desktopNav {
+  display: none;
+  gap: 8px;
+  align-items: center;
+
+  @media (min-width: 900px) {
+    display: flex;
+  }
+}
+
+.mobileMenuBtn {
+  display: flex;
+  color: var(--text-primary);
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
+.drawerPaper {
+  width: 240px;
+  background: #0e1425;
+  border-left: 1px solid rgba(107, 122, 153, 0.15);
+}
+
+.drawerHeader {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.themeToggle {
+  margin-left: 8px;
+}

@@ -1,0 +1,92 @@
+.section {
+  padding-top: 80px;
+  padding-bottom: 112px;
+  background: var(--bg-default);
+
+  @media (min-width: 900px) {
+    padding-top: 112px;
+    padding-bottom: 112px;
+  }
+}
+
+.headerCaption {
+  color: #00d4aa;
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.dotActive {
+  width: 28px;
+  background: #00d4aa;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  min-height: 380px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 170, 0.19) 0%,
+    rgba(10, 15, 30, 0.6) 100%
+  );
+}
+
+.institutionLabel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.thumbnail {
+  flex: 1;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.04);
+}
+
+.thumbnailStrip {
+  display: none;
+  gap: 16px;
+  margin-top: 24px;
+
+  @media (min-width: 600px) {
+    display: flex;
+  }
+}

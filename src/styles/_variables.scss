@@ -1,0 +1,27 @@
+/* Theme CSS custom properties — set via data-theme attribute on <html> */
+
+[data-theme="dark"] {
+  --bg-default: #0a0f1e;
+  --bg-paper: #141c2f;
+  --bg-section-alt: #111827;
+  --text-primary: #f0ede6;
+  --text-secondary: #9eb3cc;
+  --text-disabled: #6b7a99;
+  --divider: rgba(107, 122, 153, 0.15);
+  --scrollbar-track: #0a0f1e;
+  --card-border: rgba(107, 122, 153, 0.12);
+  --chip-bg: rgba(107, 122, 153, 0.1);
+}
+
+[data-theme="light"] {
+  --bg-default: #f8f9fc;
+  --bg-paper: #ffffff;
+  --bg-section-alt: #f0f2f7;
+  --text-primary: #1a1d29;
+  --text-secondary: #5a6577;
+  --text-disabled: #9ca3af;
+  --divider: rgba(0, 0, 0, 0.08);
+  --scrollbar-track: #f8f9fc;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --chip-bg: rgba(0, 0, 0, 0.06);
+}

@@ -1,0 +1,24 @@
+.footer {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: var(--bg-default);
+  border-top: 1px solid var(--divider);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
