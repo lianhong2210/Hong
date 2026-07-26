@@ -163,7 +163,7 @@ export default function Education() {
     <Box id="education" component="section" className={styles.section}>
       <Container maxWidth="lg">
         {/* Header */}
-        <Box sx={{ mb: 7 }}>
+        <Box sx={{ mb: 5 }}>
           <Typography className={styles.headerCaption} variant="caption">
             Education & Certifications
           </Typography>
@@ -195,16 +195,6 @@ export default function Education() {
               }}
             />
           ))}
-          <Typography
-            variant="caption"
-            sx={{
-              ml: "auto !important",
-              color: "text.disabled",
-              fontSize: "0.72rem",
-            }}
-          >
-            {active + 1} / {education.length}
-          </Typography>
         </Box>
 
         {/* Progress bar */}

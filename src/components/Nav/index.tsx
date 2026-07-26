@@ -15,10 +15,10 @@ import {
   ListItemButton,
   Toolbar,
   Typography,
-  useScrollTrigger,
 } from "@mui/material";
 import { useState } from "react";
 import { useThemeMode } from "../../contexts/ThemeContext";
+import { useScroll } from "../../contexts/ScrollContext";
 import styles from "./index.module.scss";
 
 const navLinks = [
@@ -30,15 +30,15 @@ const navLinks = [
 
 export default function Nav() {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 40 });
   const { mode, toggle } = useThemeMode();
+  const { pastHero } = useScroll();
 
   return (
     <>
       <AppBar
         position="fixed"
         elevation={0}
-        className={`${styles.appBar} ${trigger ? styles.appBarScrolled : ""}`}
+        className={`${styles.appBar} ${pastHero ? styles.appBarScrolled : ""}`}
       >
         <Toolbar className={styles.toolbar}>
           {/* Logo */}
@@ -58,6 +58,9 @@ export default function Nav() {
                 fontWeight: 700,
                 fontSize: "0.85rem",
                 letterSpacing: "0.1em",
+                opacity: pastHero ? 1 : 0,
+                transform: pastHero ? "translateY(0)" : "translateY(4px)",
+                transition: "opacity 0.4s ease, transform 0.4s ease",
               }}
             >
               Lim Lian Hong

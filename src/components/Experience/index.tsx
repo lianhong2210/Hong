@@ -161,7 +161,7 @@ export default function Experience() {
     <Box id="experience" component="section" className={styles.section}>
       <Container maxWidth="lg">
         {/* Header */}
-        <Box sx={{ mb: 7 }}>
+        <Box sx={{ mb: 5 }}>
           <Typography className={styles.headerCaption} variant="caption">
             Work Experience
           </Typography>
@@ -193,16 +193,6 @@ export default function Experience() {
               }}
             />
           ))}
-          <Typography
-            variant="caption"
-            sx={{
-              ml: "auto !important",
-              color: "text.disabled",
-              fontSize: "0.72rem",
-            }}
-          >
-            {active + 1} / {experiences.length}
-          </Typography>
         </Box>
 
         {/* Timer progress bar */}

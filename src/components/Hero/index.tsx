@@ -1,19 +1,18 @@
 "use client";
 
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import DownloadIcon from "@mui/icons-material/Download";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { useEffect, useReducer } from "react";
+import { useScroll } from "../../contexts/ScrollContext";
 import styles from "./index.module.scss";
 
 const roles = [
-  "Software Developer",
-  "Full Stack Engineer",
+  "Full Stack Software Engineer",
+  "Backend Specialist",
   "Problem Solver",
-  "Tech Enthusiast",
+  "Product Builder",
 ];
 
 const myEmail = "lianhong2210@gmail.com";
@@ -77,6 +76,7 @@ export default function Hero() {
     deleting: false,
   });
   const { roleIdx, displayed, deleting } = state;
+  const { scrollProgress } = useScroll();
 
   useEffect(() => {
     const current = roles[roleIdx];
@@ -102,6 +102,10 @@ export default function Hero() {
     }
   }, [displayed, deleting, roleIdx]);
 
+  // Scale from 1 down to 0.3, opacity from 1 to 0
+  const nameScale = 1 - scrollProgress * 0.7;
+  const nameOpacity = 1 - scrollProgress;
+
   return (
     <Box id="about" component="section" className={styles.section}>
       {/* Grid background */}
@@ -119,6 +123,13 @@ export default function Hero() {
               mb: 2,
               lineHeight: 1.08,
               color: "text.primary",
+              transform: `scale(${nameScale})`,
+              opacity: nameOpacity,
+              transformOrigin: "left center",
+              transition:
+                scrollProgress === 0 || scrollProgress === 1
+                  ? "transform 0.3s ease, opacity 0.3s ease"
+                  : "none",
             }}
           >
             Lim Lian Hong
@@ -179,30 +190,6 @@ export default function Hero() {
             projects, or grabbing a cup of kopi at the local mamak stall.`}
           </Typography>
 
-          {/* CTA buttons */}
-          <Stack direction="row" sx={{ mb: 5, gap: 2, flexWrap: "wrap" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              href="#experience"
-              sx={{ px: 4, py: 1.5, fontSize: "0.9rem" }}
-            >
-              View My Work
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="large"
-              href="/resume.pdf"
-              target="_blank"
-              startIcon={<DownloadIcon />}
-              sx={{ px: 4, py: 1.5, fontSize: "0.9rem" }}
-            >
-              Download CV
-            </Button>
-          </Stack>
-
           {/* Social icons */}
           <Stack direction="row" sx={{ gap: 2 }}>
             {socials.map((s) => (
@@ -232,22 +219,6 @@ export default function Hero() {
           </Stack>
         </Box>
       </Container>
-
-      {/* Scroll hint */}
-      <Box className={styles.scrollHint}>
-        <Typography
-          variant="caption"
-          sx={{
-            fontSize: "0.65rem",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "text.secondary",
-          }}
-        >
-          Scroll
-        </Typography>
-        <ArrowDownwardIcon sx={{ fontSize: 16, color: "text.secondary" }} />
-      </Box>
     </Box>
   );
 }

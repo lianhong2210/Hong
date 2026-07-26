@@ -25,16 +25,19 @@ const skills: Skill[] = [
   { name: "Next.js", icon: "▲", color: "#FFFFFF", category: "Frontend" },
   { name: "React", icon: "⚛️", color: "#61DAFB", category: "Frontend" },
   { name: "React Native", icon: "📱", color: "#61DAFB", category: "Frontend" },
-  { name: "NestJs", icon: "🐈", color: "#E01B4E", category: "Backend" },
+  { name: "NestJs", icon: "🐈", color: "#EA2845", category: "Backend" },
   { name: "Node.js", icon: "🟢", color: "#339933", category: "Backend" },
   { name: "GraphQL", icon: "◈", color: "#E10098", category: "Backend" },
   { name: "REST API", icon: "🔗", color: "#FF6C37", category: "Backend" },
+  { name: "Postman", icon: "📬", color: "#EF5B25", category: "Backend" },
   { name: "PostgreSQL", icon: "🐘", color: "#336791", category: "Database" },
   { name: "MySQL", icon: "🐬", color: "#4479A1", category: "Database" },
   { name: "Redis", icon: "🔴", color: "#DC382D", category: "Database" },
   { name: "Git", icon: "🔀", color: "#F05032", category: "DevOps" },
   { name: "Linux", icon: "🐧", color: "#FCC624", category: "DevOps" },
   { name: "Docker", icon: "🐳", color: "#2496ED", category: "DevOps" },
+  { name: "Cloudflare", icon: "☁️", color: "#F38020", category: "DevOps" },
+  { name: "Digital Ocean", icon: "🌊", color: "#0080FF", category: "DevOps" },
 ];
 
 const categories = ["All", "Frontend", "Backend", "Database", "DevOps"];
@@ -43,23 +46,23 @@ const proficiencies = [
   { label: "Frontend", percent: 70, color: "#00D4AA" },
   { label: "Backend", percent: 85, color: "#7B8FF5" },
   { label: "Database", percent: 75, color: "#F59E0B" },
-  { label: "DevOps / Cloud", percent: 50, color: "#EC4899" },
+  { label: "DevOps / Cloud", percent: 60, color: "#EC4899" },
 ];
 
 export default function Skills() {
-  const [activeCat, setActiveCat] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("All");
   const [hovered, setHovered] = useState<string | null>(null);
 
   const filtered =
-    activeCat === "All"
+    activeCategory === "All"
       ? skills
-      : skills.filter((s) => s.category === activeCat);
+      : skills.filter((s) => s.category === activeCategory);
 
   return (
     <Box id="skills" component="section" className={styles.section}>
       <Container maxWidth="lg">
         {/* Header */}
-        <Box sx={{ mb: 7 }}>
+        <Box sx={{ mb: 5 }}>
           <Typography className={styles.headerCaption} variant="caption">
             Skills & Technologies
           </Typography>
@@ -75,7 +78,7 @@ export default function Skills() {
           </Typography>
           <Typography
             variant="body2"
-            sx={{ color: "text.secondary", maxWidth: 480 }}
+            sx={{ color: "text.secondary", maxWidth: 550 }}
           >
             Technologies and tools I use to bring ideas to life — from pixel to
             production.
@@ -95,19 +98,21 @@ export default function Skills() {
               key={cat}
               label={cat}
               clickable
-              onClick={() => setActiveCat(cat)}
+              onClick={() => setActiveCategory(cat)}
               sx={{
                 fontFamily: '"Inter", sans-serif',
                 fontSize: "0.82rem",
-                fontWeight: activeCat === cat ? 600 : 400,
+                fontWeight: activeCategory === cat ? 600 : 400,
                 bgcolor:
-                  activeCat === cat ? "primary.main" : "rgba(107,122,153,0.1)",
-                color: activeCat === cat ? "#0A0F1E" : "text.secondary",
-                border: `1px solid ${activeCat === cat ? "transparent" : "rgba(107,122,153,0.2)"}`,
+                  activeCategory === cat
+                    ? "primary.main"
+                    : "rgba(107,122,153,0.1)",
+                color: activeCategory === cat ? "#0A0F1E" : "text.secondary",
+                border: `1px solid ${activeCategory === cat ? "transparent" : "rgba(107,122,153,0.2)"}`,
                 transition: "all 0.2s",
                 "&:hover": {
                   bgcolor:
-                    activeCat === cat
+                    activeCategory === cat
                       ? "primary.light"
                       : "rgba(107,122,153,0.2)",
                 },
@@ -188,7 +193,7 @@ export default function Skills() {
           <CardContent sx={{ p: { xs: 3, md: 4 } }}>
             <Typography
               variant="h6"
-              sx={{ color: "text.primary", mb: 3.5, fontSize: "1rem" }}
+              sx={{ color: "text.primary", mb: 3, fontSize: "1rem" }}
             >
               Proficiency Breakdown
             </Typography>

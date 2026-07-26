@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import MuiProvider from "../components/MuiProvider";
 import { ThemeProvider } from "../contexts/ThemeContext";
+import { ScrollProvider } from "../contexts/ScrollContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -33,7 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider>
         <MuiProvider>
-          <Component {...pageProps} />
+          <ScrollProvider>
+            <Component {...pageProps} />
+          </ScrollProvider>
         </MuiProvider>
       </ThemeProvider>
     </>
