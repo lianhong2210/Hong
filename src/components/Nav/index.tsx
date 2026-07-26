@@ -1,24 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
-  Toolbar,
-  Typography,
+  Box,
   Button,
-  IconButton,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
-  Box,
+  Toolbar,
+  Typography,
   useScrollTrigger,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import CodeIcon from "@mui/icons-material/Code";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
+import { useState } from "react";
 import { useThemeMode } from "../../contexts/ThemeContext";
 import styles from "./index.module.scss";
 
@@ -44,7 +43,14 @@ export default function Nav() {
         <Toolbar className={styles.toolbar}>
           {/* Logo */}
           <Box className={styles.logo}>
-            <CodeIcon sx={{ color: "primary.main", fontSize: 20 }} />
+            {/* Mobile menu icon */}
+            <IconButton
+              className={styles.mobileMenuBtn}
+              onClick={() => setDrawerOpen(true)}
+            >
+              <MenuIcon color="primary" />
+            </IconButton>
+
             <Typography
               variant="caption"
               sx={{
@@ -54,7 +60,7 @@ export default function Nav() {
                 letterSpacing: "0.1em",
               }}
             >
-              LLH
+              Lim Lian Hong
             </Typography>
           </Box>
 
@@ -88,30 +94,13 @@ export default function Nav() {
                 <DarkModeIcon fontSize="small" />
               )}
             </IconButton>
-            <Button
-              href="mailto:lianlianghong@email.com"
-              variant="outlined"
-              color="primary"
-              size="small"
-              sx={{ ml: 1, borderRadius: 2, px: 2.5 }}
-            >
-              Contact
-            </Button>
           </Box>
-
-          {/* Mobile menu icon */}
-          <IconButton
-            className={styles.mobileMenuBtn}
-            onClick={() => setDrawerOpen(true)}
-          >
-            <MenuIcon />
-          </IconButton>
         </Toolbar>
       </AppBar>
 
       {/* Mobile Drawer */}
       <Drawer
-        anchor="right"
+        anchor="left"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         slotProps={{
@@ -142,17 +131,6 @@ export default function Nav() {
               </ListItemButton>
             </ListItem>
           ))}
-          <ListItem sx={{ mt: 2, px: 2 }}>
-            <Button
-              href="mailto:lianlianghong@email.com"
-              variant="outlined"
-              color="primary"
-              fullWidth
-              onClick={() => setDrawerOpen(false)}
-            >
-              Contact
-            </Button>
-          </ListItem>
           <ListItem sx={{ px: 2, mt: 1 }}>
             <Button
               variant="text"

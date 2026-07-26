@@ -16,12 +16,22 @@ const roles = [
   "Tech Enthusiast",
 ];
 
+const myEmail = "lianhong2210@gmail.com";
+
 const socials = [
-  { icon: <GitHubIcon />, href: "https://github.com", label: "GitHub" },
-  { icon: <LinkedInIcon />, href: "https://linkedin.com", label: "LinkedIn" },
+  {
+    icon: <GitHubIcon />,
+    href: "https://github.com/lianhong2210",
+    label: "GitHub",
+  },
+  {
+    icon: <LinkedInIcon />,
+    href: "https://www.linkedin.com/in/lim-lian-hong-64b334223",
+    label: "LinkedIn",
+  },
   {
     icon: <EmailIcon />,
-    href: "mailto:lianlianghong@email.com",
+    href: myEmail,
     label: "Email",
   },
 ];
@@ -199,7 +209,11 @@ export default function Hero() {
               <Box
                 key={s.label}
                 component="a"
-                href={s.href}
+                href={
+                  s.label.toLowerCase() === "email"
+                    ? `mailto:${myEmail}`
+                    : s.href
+                }
                 target={s.label !== "Email" ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 aria-label={s.label}
