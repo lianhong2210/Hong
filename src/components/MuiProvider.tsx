@@ -49,7 +49,7 @@ const darkTheme = createTheme({
     body1: { lineHeight: 1.8 },
     body2: { lineHeight: 1.7 },
     caption: {
-      fontFamily: '"JetBrains Mono", "Courier New", monospace',
+      fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       letterSpacing: "0.06em",
     },
   },
@@ -67,7 +67,7 @@ const darkTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          fontFamily: '"JetBrains Mono", monospace',
+          fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
           fontSize: "0.72rem",
         },
       },
@@ -137,7 +137,7 @@ const lightTheme = createTheme({
     body1: { lineHeight: 1.8 },
     body2: { lineHeight: 1.7 },
     caption: {
-      fontFamily: '"JetBrains Mono", "Courier New", monospace',
+      fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       letterSpacing: "0.06em",
     },
   },
@@ -155,7 +155,7 @@ const lightTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          fontFamily: '"JetBrains Mono", monospace',
+          fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
           fontSize: "0.72rem",
         },
       },
