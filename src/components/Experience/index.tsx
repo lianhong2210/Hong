@@ -1,24 +1,29 @@
-"use client";
+// ** React
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+// ** MUI
 import {
+  Avatar,
   Box,
-  Container,
-  Typography,
   Card,
   CardContent,
   Chip,
-  Stack,
-  Avatar,
+  Container,
   LinearProgress,
+  Stack,
+  Typography,
 } from "@mui/material";
-import WorkIcon from "@mui/icons-material/Work";
-import CloudIcon from "@mui/icons-material/Cloud";
-import StoreIcon from "@mui/icons-material/Store";
-import LaptopMacIcon from "@mui/icons-material/LaptopMac";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+
+// ** Icons
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
+import CloudIcon from "@mui/icons-material/Cloud";
+import LaptopMacIcon from "@mui/icons-material/LaptopMac";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import StoreIcon from "@mui/icons-material/Store";
+import WorkIcon from "@mui/icons-material/Work";
+
+// ** Styles
 import styles from "./index.module.scss";
 
 const SLIDE_DURATION = 10000;
@@ -376,7 +381,10 @@ export default function Experience() {
                 onClick={() => goTo(i)}
                 className={styles.sidebarCard}
                 sx={{
-                  background: active === i ? e.bgColor : "var(--bg-card-unselected, #1a2138)",
+                  background:
+                    active === i
+                      ? e.bgColor
+                      : "var(--bg-card-unselected, #1a2138)",
                   border: `1px solid ${active === i ? e.color + "45" : e.color + "25"}`,
                   boxShadow: "none",
                   "&:hover": { borderColor: e.color + "50" },

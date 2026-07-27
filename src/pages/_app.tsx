@@ -1,8 +1,12 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import MuiProvider from "../components/MuiProvider";
+
+// ** Contexts
 import { ThemeProvider } from "../contexts/ThemeContext";
 import { ScrollProvider } from "../contexts/ScrollContext";
+
+// ** Styles
 import "../styles/_variables.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -12,16 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Lim Lian Hong</title>
         <meta name="description" content="Portfolio of Lim Lian Hong" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <style>{`
           html { scroll-behavior: smooth; }
           body { overflow-x: hidden; }

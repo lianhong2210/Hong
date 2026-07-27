@@ -1,17 +1,20 @@
-"use client";
-
+// ** React
 import { useState } from "react";
+
+// ** MUI
 import {
   Box,
-  Container,
-  Typography,
   Card,
   CardContent,
   Chip,
-  Stack,
-  LinearProgress,
+  Container,
   Grid,
+  LinearProgress,
+  Stack,
+  Typography,
 } from "@mui/material";
+
+// ** Styles
 import styles from "./index.module.scss";
 
 interface Skill {

@@ -1,25 +1,30 @@
-"use client";
+// ** React
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+// ** MUI
 import {
+  Avatar,
   Box,
-  Container,
-  Typography,
   Card,
   CardContent,
   CardMedia,
   Chip,
-  Stack,
-  Avatar,
+  Container,
   LinearProgress,
+  Stack,
+  Typography,
 } from "@mui/material";
-import SchoolIcon from "@mui/icons-material/School";
+
+// ** Icons
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import SchoolIcon from "@mui/icons-material/School";
+import StarIcon from "@mui/icons-material/Star";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import StarIcon from "@mui/icons-material/Star";
+
+// ** Styles
 import styles from "./index.module.scss";
 
 const SLIDE_DURATION = 10000;

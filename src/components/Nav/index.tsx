@@ -1,9 +1,11 @@
-"use client";
+// ** React
+import { useState } from "react";
 
-import CloseIcon from "@mui/icons-material/Close";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import MenuIcon from "@mui/icons-material/Menu";
+// ** Hooks
+import { useScroll } from "../../contexts/ScrollContext";
+import { useThemeMode } from "../../contexts/ThemeContext";
+
+// ** MUI
 import {
   AppBar,
   Box,
@@ -16,9 +18,14 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
-import { useThemeMode } from "../../contexts/ThemeContext";
-import { useScroll } from "../../contexts/ScrollContext";
+
+// ** Icons
+import CloseIcon from "@mui/icons-material/Close";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import MenuIcon from "@mui/icons-material/Menu";
+
+// ** Styles
 import styles from "./index.module.scss";
 
 const navLinks = [

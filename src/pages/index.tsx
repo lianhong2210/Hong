@@ -1,9 +1,10 @@
-import Nav from "../components/Nav";
-import Hero from "../components/Hero";
-import Experience from "../components/Experience";
+// ** Components
 import Education from "../components/Education";
-import Skills from "../components/Skills";
+import Experience from "../components/Experience";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Nav from "../components/Nav";
+import Skills from "../components/Skills";
 
 const Home = () => {
   return (

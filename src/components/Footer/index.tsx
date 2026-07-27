@@ -1,8 +1,13 @@
+// ** MUI
+import { Box, Container, Stack, Typography } from "@mui/material";
+
+// ** Icons
 import CodeIcon from "@mui/icons-material/Code";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Box, Container, Stack, Typography } from "@mui/material";
+
+// ** Styles
 import styles from "./index.module.scss";
 
 const myEmail = "lianhong2210@gmail.com";
