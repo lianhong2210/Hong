@@ -47,14 +47,15 @@ export default function Nav() {
             <IconButton
               className={styles.mobileMenuBtn}
               onClick={() => setDrawerOpen(true)}
+              sx={{ color: "text.primary" }}
             >
-              <MenuIcon color="primary" />
+              <MenuIcon />
             </IconButton>
 
             <Typography
               variant="caption"
               sx={{
-                color: "primary.main",
+                color: "text.primary",
                 fontWeight: 700,
                 fontSize: "0.85rem",
                 letterSpacing: "0.1em",
@@ -74,11 +75,11 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 sx={{
-                  color: "text.secondary",
+                  color: "text.primary",
                   fontSize: "0.85rem",
                   fontWeight: 500,
                   "&:hover": {
-                    color: "primary.main",
+                    color: "#FFFFFF",
                     background: "transparent",
                   },
                 }}

@@ -376,9 +376,9 @@ export default function Experience() {
                 onClick={() => goTo(i)}
                 className={styles.sidebarCard}
                 sx={{
-                  background: active === i ? e.bgColor : "background.paper",
-                  bgcolor: active === i ? undefined : "#141C2F",
-                  border: `1px solid ${active === i ? e.color + "45" : "rgba(107,122,153,0.1)"}`,
+                  background: active === i ? e.bgColor : "var(--bg-card-unselected, #1a2138)",
+                  border: `1px solid ${active === i ? e.color + "45" : e.color + "25"}`,
+                  boxShadow: "none",
                   "&:hover": { borderColor: e.color + "50" },
                 }}
               >

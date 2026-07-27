@@ -3,6 +3,7 @@ import Head from "next/head";
 import MuiProvider from "../components/MuiProvider";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import { ScrollProvider } from "../contexts/ScrollContext";
+import "../styles/_variables.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

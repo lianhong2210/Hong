@@ -7,7 +7,7 @@
   padding-top: 96px;
   padding-bottom: 80px;
   overflow: hidden;
-  background: linear-gradient(160deg, #0a0f1e 0%, #0d1528 60%, #0a0f1e 100%);
+  background: linear-gradient(160deg, var(--bg-default, #0a0f1e) 0%, var(--bg-section-alt, #111827) 60%, var(--bg-default, #0a0f1e) 100%);
 }
 
 .gridBg {

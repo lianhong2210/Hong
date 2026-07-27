@@ -22,7 +22,7 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: "Next.js", icon: "▲", color: "#FFFFFF", category: "Frontend" },
+  { name: "Next.js", icon: "▲", color: "#A9A9A9", category: "Frontend" },
   { name: "React", icon: "⚛️", color: "#61DAFB", category: "Frontend" },
   { name: "React Native", icon: "📱", color: "#61DAFB", category: "Frontend" },
   { name: "NestJs", icon: "🐈", color: "#EA2845", category: "Backend" },
@@ -134,7 +134,10 @@ export default function Skills() {
                     hovered === skill.name
                       ? skill.color + "12"
                       : "background.paper",
-                  bgcolor: hovered === skill.name ? undefined : "#141C2F",
+                  bgcolor:
+                    hovered === skill.name
+                      ? undefined
+                      : "var(--bg-paper, #141C2F)",
                   border: `1px solid ${hovered === skill.name ? skill.color + "50" : "rgba(107,122,153,0.1)"}`,
                   boxShadow:
                     hovered === skill.name

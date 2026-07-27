@@ -5,7 +5,7 @@
 }
 
 .appBarScrolled {
-  background: rgba(10, 15, 30, 0.94);
+  background: var(--bg-default, #0a0f1e);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--divider);
 }
@@ -49,8 +49,8 @@
 
 .drawerPaper {
   width: 240px;
-  background: #0e1425;
-  border-left: 1px solid rgba(107, 122, 153, 0.15);
+  background: var(--bg-paper, #141c2f);
+  border-left: 1px solid var(--divider);
 }
 
 .drawerHeader {

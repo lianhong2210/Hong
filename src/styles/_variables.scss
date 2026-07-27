@@ -4,6 +4,7 @@
   --bg-default: #0a0f1e;
   --bg-paper: #141c2f;
   --bg-section-alt: #111827;
+  --bg-card-unselected: #1a2138;
   --text-primary: #f0ede6;
   --text-secondary: #9eb3cc;
   --text-disabled: #6b7a99;
@@ -15,8 +16,9 @@
 
 [data-theme="light"] {
   --bg-default: #f8f9fc;
-  --bg-paper: #ffffff;
+  --bg-paper: #f8f9fc;
   --bg-section-alt: #f0f2f7;
+  --bg-card-unselected: #f8f9fc;
   --text-primary: #1a1d29;
   --text-secondary: #5a6577;
   --text-disabled: #9ca3af;
