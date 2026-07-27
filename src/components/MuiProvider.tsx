@@ -1,7 +1,5 @@
-"use client";
-
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { useThemeMode } from "../contexts/ThemeContext";
 
 const darkTheme = createTheme({

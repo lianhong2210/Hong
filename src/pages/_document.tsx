@@ -11,6 +11,11 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){try{var m=localStorage.getItem('theme-mode'),d=document.documentElement;if(m==='light'||m==='dark'){d.setAttribute('data-theme',m);}else{var p=window.matchMedia('(prefers-color-scheme:dark)');d.setAttribute('data-theme',p.matches?'dark':'light');}}catch(e){document.documentElement.setAttribute('data-theme','dark');}document.documentElement.style.visibility='hidden';})();`,
+            }}
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

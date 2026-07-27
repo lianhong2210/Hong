@@ -1,5 +1,3 @@
-"use client";
-
 import {
   createContext,
   useContext,
@@ -22,21 +20,26 @@ const ThemeContext = createContext<ThemeContextValue>({
   setMode: () => {},
 });
 
-function getInitialMode(): ThemeMode {
-  if (typeof window === "undefined") return "dark";
-  const stored = localStorage.getItem("theme-mode") as ThemeMode | null;
-  if (stored === "light" || stored === "dark") return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<ThemeMode>(getInitialMode);
+  const [mode, setMode] = useState<ThemeMode>("dark");
 
   useEffect(() => {
-    localStorage.setItem("theme-mode", mode);
+    // Read correct theme from data-theme (already set by inline script before paint)
+    const attr = document.documentElement.getAttribute("data-theme");
+    const resolvedMode: ThemeMode =
+      attr === "light" || attr === "dark" ? attr : "dark";
+
+    setMode(resolvedMode);
+    document.documentElement.setAttribute("data-theme", resolvedMode);
+    localStorage.setItem("theme-mode", resolvedMode);
+
+    // Reveal the page (hidden by inline script in _document.tsx)
+    document.documentElement.style.visibility = "visible";
+  }, []);
+
+  useEffect(() => {
     document.documentElement.setAttribute("data-theme", mode);
+    localStorage.setItem("theme-mode", mode);
   }, [mode]);
 
   const toggle = () => setMode((prev) => (prev === "dark" ? "light" : "dark"));

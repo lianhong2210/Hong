@@ -110,7 +110,7 @@ export default function Skills() {
                   activeCategory === cat
                     ? "primary.main"
                     : "rgba(107,122,153,0.1)",
-                color: activeCategory === cat ? "#0A0F1E" : "text.secondary",
+                color: activeCategory === cat ? "background.default" : "text.secondary",
                 border: `1px solid ${activeCategory === cat ? "transparent" : "rgba(107,122,153,0.2)"}`,
                 transition: "all 0.2s",
                 "&:hover": {
@@ -140,7 +140,7 @@ export default function Skills() {
                   bgcolor:
                     hovered === skill.name
                       ? undefined
-                      : "var(--bg-paper, #141C2F)",
+                      : "background.paper",
                   border: `1px solid ${hovered === skill.name ? skill.color + "50" : "rgba(107,122,153,0.1)"}`,
                   boxShadow:
                     hovered === skill.name
