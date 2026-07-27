@@ -21,21 +21,13 @@ const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<ThemeMode>("dark");
-
-  useEffect(() => {
-    // Read correct theme from data-theme (already set by inline script before paint)
-    const attr = document.documentElement.getAttribute("data-theme");
-    const resolvedMode: ThemeMode =
-      attr === "light" || attr === "dark" ? attr : "dark";
-
-    setMode(resolvedMode);
-    document.documentElement.setAttribute("data-theme", resolvedMode);
-    localStorage.setItem("theme-mode", resolvedMode);
-
-    // Reveal the page (hidden by inline script in _document.tsx)
-    document.documentElement.style.visibility = "visible";
-  }, []);
+  const [mode, setMode] = useState<ThemeMode>(() => {
+    if (typeof window !== "undefined") {
+      const attr = document.documentElement.getAttribute("data-theme");
+      if (attr === "light" || attr === "dark") return attr;
+    }
+    return "dark";
+  });
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", mode);
