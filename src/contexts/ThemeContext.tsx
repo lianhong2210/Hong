@@ -1,8 +1,9 @@
 import {
   createContext,
   useContext,
-  useState,
+  useCallback,
   useEffect,
+  useSyncExternalStore,
   ReactNode,
 } from "react";
 
@@ -20,31 +21,44 @@ const ThemeContext = createContext<ThemeContextValue>({
   setMode: () => {},
 });
 
+// --- External store: the DOM's data-theme attribute + localStorage ---
+type Listener = () => void;
+const listeners = new Set<Listener>();
+
+function getSnapshot(): ThemeMode {
+  const attr = document.documentElement.getAttribute("data-theme");
+  return attr === "light" || attr === "dark" ? attr : "dark";
+}
+
+// Server has no DOM — must match the context's default exactly.
+function getServerSnapshot(): ThemeMode {
+  return "dark";
+}
+
+function subscribe(listener: Listener) {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+function applyMode(m: ThemeMode) {
+  document.documentElement.setAttribute("data-theme", m);
+  localStorage.setItem("theme-mode", m);
+  listeners.forEach((l) => l()); // tell React the snapshot changed
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<ThemeMode>("dark");
-  const [ready, setReady] = useState(false);
+  const mode = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
+  const setMode = useCallback((m: ThemeMode) => applyMode(m), []);
+  const toggle = useCallback(
+    () => setMode(mode === "dark" ? "light" : "dark"),
+    [mode, setMode],
+  );
+
+  // Pure DOM side effect, no setState involved — safe in an effect.
   useEffect(() => {
-    // Read the correct theme from data-theme (already set by inline script)
-    const attr = document.documentElement.getAttribute("data-theme");
-    const resolvedMode: ThemeMode =
-      attr === "light" || attr === "dark" ? attr : "dark";
-
-    setMode(resolvedMode);
-    document.documentElement.setAttribute("data-theme", resolvedMode);
-    localStorage.setItem("theme-mode", resolvedMode);
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    document.documentElement.setAttribute("data-theme", mode);
-    localStorage.setItem("theme-mode", mode);
-    // Reveal page after correct theme is committed
     document.documentElement.style.visibility = "visible";
-  }, [mode, ready]);
-
-  const toggle = () => setMode((prev) => (prev === "dark" ? "light" : "dark"));
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ mode, toggle, setMode }}>
