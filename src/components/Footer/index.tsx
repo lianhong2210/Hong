@@ -52,7 +52,7 @@ export default function Footer() {
               variant="caption"
               sx={{ color: "text.disabled", ml: 0.5 }}
             >
-              &copy; {new Date().getFullYear()}. All rights reserved.
+              &copy; {new Date().getFullYear()} | All rights reserved.
             </Typography>
           </Box>
 
