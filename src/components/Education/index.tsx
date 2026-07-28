@@ -47,12 +47,12 @@ interface Edu {
 
 const education: Edu[] = [
   {
-    institution: "Universiti Malaya",
-    degree: "Bachelor of Computer Science",
-    field: "Software Engineering",
-    period: "2016 — 2020",
-    location: "Kuala Lumpur, MY",
-    grade: "CGPA 3.78 / 4.00",
+    institution: "Tunku Abdul Rahman University College",
+    degree: "Bachelor of Information Technology (Honours)",
+    field: "Software Systems Development",
+    period: "JUN 2020 — JUL 2022",
+    location: "Kuala Lumpur, Malaysia",
+    grade: "CGPA 3.74 / 4.00",
     description:
       "Focused on software engineering principles, data structures & algorithms, and distributed systems. Final year project explored real-time collaborative document editing using CRDTs.",
     highlights: [
@@ -64,15 +64,15 @@ const education: Edu[] = [
     bgColor: "rgba(0,212,170,0.08)",
     icon: <SchoolIcon />,
     image: "https://picsum.photos/seed/campus1/800/400",
-    imageAlt: "Universiti Malaya campus",
+    imageAlt: "TARUC campus",
   },
   {
     institution: "INTI International College",
-    degree: "Foundation in Science",
-    field: "Computer Science Track",
-    period: "2015 — 2016",
-    location: "Subang Jaya, MY",
-    grade: "CGPA 4.00 / 4.00",
+    degree: "Diploma in Computer Science",
+    field: "Management Mathematics",
+    period: "MAY 2018 - APR 2020",
+    location: "Kuala Lumpur, Malaysia",
+    grade: "CGPA 3.76 / 4.00",
     description:
       "Completed a one-year foundation programme with a perfect GPA, earning a direct entry scholarship to the bachelor's degree programme.",
     highlights: [
@@ -84,7 +84,7 @@ const education: Edu[] = [
     bgColor: "rgba(123,143,245,0.08)",
     icon: <EmojiEventsIcon />,
     image: "https://picsum.photos/seed/campus2/800/400",
-    imageAlt: "INTI International College",
+    imageAlt: "TARUC campus",
   },
   {
     institution: "Amazon Web Services",

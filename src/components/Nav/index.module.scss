@@ -39,11 +39,11 @@
 }
 
 .mobileMenuBtn {
-  display: none;
+  display: none !important;
   color: var(--text-primary);
 
   @media (max-width: 899px) {
-    display: flex;
+    display: flex !important;
   }
 }
 
