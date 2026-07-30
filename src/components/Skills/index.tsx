@@ -110,7 +110,10 @@ export default function Skills() {
                   activeCategory === cat
                     ? "primary.main"
                     : "rgba(107,122,153,0.1)",
-                color: activeCategory === cat ? "background.default" : "text.secondary",
+                color:
+                  activeCategory === cat
+                    ? "background.default"
+                    : "text.secondary",
                 border: `1px solid ${activeCategory === cat ? "transparent" : "rgba(107,122,153,0.2)"}`,
                 transition: "all 0.2s",
                 "&:hover": {
@@ -138,9 +141,7 @@ export default function Skills() {
                       ? skill.color + "12"
                       : "background.paper",
                   bgcolor:
-                    hovered === skill.name
-                      ? undefined
-                      : "background.paper",
+                    hovered === skill.name ? undefined : "background.paper",
                   border: `1px solid ${hovered === skill.name ? skill.color + "50" : "rgba(107,122,153,0.1)"}`,
                   boxShadow:
                     hovered === skill.name
@@ -220,7 +221,6 @@ export default function Skills() {
                       variant="caption"
                       sx={{
                         color: item.color,
-                        fontFamily: '"JetBrains Mono", monospace',
                         fontWeight: 600,
                       }}
                     >

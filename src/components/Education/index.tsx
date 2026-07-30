@@ -355,7 +355,6 @@ export default function Education() {
                 bgcolor: edu.color + "16",
                 color: edu.color,
                 border: `1px solid ${edu.color}35`,
-                fontFamily: '"JetBrains Mono", monospace',
                 fontSize: "0.72rem",
                 mb: 2.5,
               }}

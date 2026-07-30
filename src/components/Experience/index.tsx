@@ -263,7 +263,6 @@ export default function Experience() {
                   sx={{
                     bgcolor: "rgba(107,122,153,0.12)",
                     color: "text.secondary",
-                    fontFamily: '"JetBrains Mono", monospace',
                     fontSize: "0.7rem",
                   }}
                 />
