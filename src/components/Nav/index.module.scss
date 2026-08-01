@@ -2,6 +2,12 @@
   background: transparent;
   border-bottom: none;
   transition: all 0.35s ease;
+
+  @media (max-width: 899px) {
+    background: var(--bg-default, #0a0f1e);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--divider);
+  }
 }
 
 .appBarScrolled {

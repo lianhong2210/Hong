@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 // ** Hooks
-import { useScroll } from "../../contexts/ScrollContext";
 import { useThemeMode } from "../../contexts/ThemeContext";
 
 // ** MUI
@@ -28,6 +27,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 // ** Styles
 import styles from "./index.module.scss";
 
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
@@ -36,16 +38,22 @@ const navLinks = [
 ];
 
 export default function Nav() {
+  const { isAboutNameVisible } = useSelector(
+    (state: RootState) => state.common,
+  );
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { mode, toggle } = useThemeMode();
-  const { pastHero } = useScroll();
+
+  const showNavName =
+    !isAboutNameVisible && typeof isAboutNameVisible === "boolean";
 
   return (
     <>
       <AppBar
         position="fixed"
         elevation={0}
-        className={`${styles.appBar} ${pastHero ? styles.appBarScrolled : ""}`}
+        className={`${styles.appBar} ${showNavName ? styles.appBarScrolled : ""}`}
       >
         <Toolbar className={styles.toolbar}>
           {/* Logo */}
@@ -66,8 +74,8 @@ export default function Nav() {
                 fontWeight: 700,
                 fontSize: "0.85rem",
                 letterSpacing: "0.1em",
-                opacity: pastHero ? 1 : 0,
-                transform: pastHero ? "translateY(0)" : "translateY(4px)",
+                opacity: showNavName ? 1 : 0,
+                transform: showNavName ? "translateY(0)" : "translateY(4px)",
                 transition: "opacity 0.4s ease, transform 0.4s ease",
               }}
             >

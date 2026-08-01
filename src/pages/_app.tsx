@@ -3,18 +3,20 @@ import Head from "next/head";
 import MuiProvider from "../components/MuiProvider";
 
 // ** Contexts
-import { ThemeProvider } from "../contexts/ThemeContext";
 import { ScrollProvider } from "../contexts/ScrollContext";
+import { ThemeProvider } from "../contexts/ThemeContext";
+import { Provider } from "react-redux";
+import { store } from "../store";
 
 // ** Styles
 import "../styles/_variables.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Provider store={store}>
       <Head>
-        <title>Lim Lian Hong</title>
-        <meta name="description" content="Portfolio of Lim Lian Hong" />
+        <title>Lim Lian Hong - Full Stack Software Engineer</title>
+        <meta name="description" content="Lim Lian Hong's Portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>{`
           html { scroll-behavior: smooth; }
@@ -34,6 +36,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </ScrollProvider>
         </MuiProvider>
       </ThemeProvider>
-    </>
+    </Provider>
   );
 }

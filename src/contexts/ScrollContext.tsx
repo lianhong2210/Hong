@@ -9,18 +9,14 @@ import {
 interface ScrollContextValue {
   /** 0 when Hero is at top, 1 when Hero is fully scrolled past */
   scrollProgress: number;
-  /** True when Hero is fully scrolled past (scrollProgress >= 1) */
-  pastHero: boolean;
 }
 
 const ScrollContext = createContext<ScrollContextValue>({
   scrollProgress: 0,
-  pastHero: false,
 });
 
 export function ScrollProvider({ children }: { children: ReactNode }) {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [pastHero, setPastHero] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +29,6 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       const progress = Math.min(Math.max(-rect.top / total, 0), 1);
 
       setScrollProgress(progress);
-      setPastHero(progress >= 1);
     };
 
     handleScroll();
@@ -42,7 +37,7 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <ScrollContext.Provider value={{ scrollProgress, pastHero }}>
+    <ScrollContext.Provider value={{ scrollProgress }}>
       {children}
     </ScrollContext.Provider>
   );

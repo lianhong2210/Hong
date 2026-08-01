@@ -1,5 +1,5 @@
 // ** React
-import { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 
 // ** Hooks
 import { useScroll } from "../../contexts/ScrollContext";
@@ -7,111 +7,79 @@ import { useScroll } from "../../contexts/ScrollContext";
 // ** MUI
 import { Box, Container, Stack, Typography } from "@mui/material";
 
-// ** Icons
-import EmailIcon from "@mui/icons-material/Email";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+// ** Redux
+import { useIsVisible } from "../../hooks/useIsVisible";
+import { setIsAboutNameVisible, setTypewriter } from "../../store/apps/common";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 // ** Styles
 import styles from "./index.module.scss";
 
-const roles = [
-  "Full Stack Software Engineer",
-  "Backend Specialist",
-  "Problem Solver",
-  "Product Builder",
-];
-
-const myEmail = "lianhong2210@gmail.com";
-
-const socials = [
-  {
-    icon: <GitHubIcon />,
-    href: "https://github.com/lianhong2210",
-    label: "GitHub",
-  },
-  {
-    icon: <LinkedInIcon />,
-    href: "https://www.linkedin.com/in/lim-lian-hong-64b334223",
-    label: "LinkedIn",
-  },
-  {
-    icon: <EmailIcon />,
-    href: myEmail,
-    label: "Email",
-  },
-];
-
-interface TypewriterState {
-  roleIdx: number;
-  displayed: string;
-  deleting: boolean;
-}
-
-type TypewriterAction =
-  | { type: "APPEND_CHAR"; char: string }
-  | { type: "DELETE_CHAR" }
-  | { type: "START_DELETING" }
-  | { type: "NEXT_ROLE" };
-
-function typewriterReducer(
-  state: TypewriterState,
-  action: TypewriterAction,
-): TypewriterState {
-  switch (action.type) {
-    case "APPEND_CHAR":
-      return { ...state, displayed: state.displayed + action.char };
-    case "DELETE_CHAR":
-      return { ...state, displayed: state.displayed.slice(0, -1) };
-    case "START_DELETING":
-      return { ...state, deleting: true };
-    case "NEXT_ROLE":
-      return {
-        roleIdx: (state.roleIdx + 1) % roles.length,
-        displayed: "",
-        deleting: false,
-      };
-    default:
-      return state;
-  }
-}
+// ** Constant
+import { socials } from "../../constant/social";
+import { roles } from "../../constant/roles";
 
 export default function Hero() {
-  const [state, dispatch] = useReducer(typewriterReducer, {
-    roleIdx: 0,
-    displayed: "",
-    deleting: false,
-  });
-  const { roleIdx, displayed, deleting } = state;
-  const { scrollProgress } = useScroll();
+  // Redux
+  const { roleIdx, displayed, deleting } = useSelector((state: RootState) =>
+    state.common.typewriter !== undefined
+      ? state.common.typewriter
+      : {
+          roleIdx: 0,
+          displayed: "",
+          deleting: false,
+        },
+  );
+  const dispatch = useDispatch();
 
+  // Hooks
+  const { scrollProgress } = useScroll();
+  const [isVisibleRef, isVisible] = useIsVisible({ offsetTop: 65 });
+
+  // Roles text animation
   useEffect(() => {
     const current = roles[roleIdx];
     if (!deleting && displayed.length < current.length) {
       const nextChar = current[displayed.length];
       const t = setTimeout(
-        () => dispatch({ type: "APPEND_CHAR", char: nextChar }),
+        () => dispatch(setTypewriter({ type: "APPEND_CHAR", char: nextChar })),
         80,
       );
       return () => clearTimeout(t);
     }
     if (!deleting && displayed.length === current.length) {
-      const t = setTimeout(() => dispatch({ type: "START_DELETING" }), 2400);
+      const t = setTimeout(
+        () => dispatch(setTypewriter({ type: "START_DELETING" })),
+        2400,
+      );
       return () => clearTimeout(t);
     }
     if (deleting && displayed.length > 0) {
-      const t = setTimeout(() => dispatch({ type: "DELETE_CHAR" }), 45);
+      const t = setTimeout(
+        () => dispatch(setTypewriter({ type: "DELETE_CHAR" })),
+        45,
+      );
       return () => clearTimeout(t);
     }
     if (deleting && displayed.length === 0) {
-      const t = setTimeout(() => dispatch({ type: "NEXT_ROLE" }), 0);
+      const t = setTimeout(
+        () => dispatch(setTypewriter({ type: "NEXT_ROLE" })),
+        0,
+      );
       return () => clearTimeout(t);
     }
-  }, [displayed, deleting, roleIdx]);
+  }, [displayed, deleting, roleIdx, dispatch]);
 
   // Scale from 1 down to 0.3, opacity from 1 to 0
   const nameScale = 1 - scrollProgress * 0.7;
   const nameOpacity = 1 - scrollProgress;
+
+  useEffect(() => {
+    if (isVisible === undefined) return;
+
+    dispatch(setIsAboutNameVisible(isVisible));
+  }, [isVisible, dispatch]);
 
   return (
     <Box id="about" component="section" className={styles.section}>
@@ -124,6 +92,7 @@ export default function Hero() {
         <Box className={styles.fadeIn}>
           {/* Name */}
           <Typography
+            ref={isVisibleRef}
             variant="h1"
             sx={{
               fontSize: { xs: "2.8rem", sm: "4rem", md: "5.5rem" },
@@ -205,7 +174,7 @@ export default function Hero() {
                 component="a"
                 href={
                   s.label.toLowerCase() === "email"
-                    ? `mailto:${myEmail}`
+                    ? `mailto:${s.href}`
                     : s.href
                 }
                 target={s.label !== "Email" ? "_blank" : undefined}

@@ -37,6 +37,7 @@ const skills: Skill[] = [
   { name: "MySQL", icon: "🐬", color: "#4479A1", category: "Database" },
   { name: "Redis", icon: "🔴", color: "#DC382D", category: "Database" },
   { name: "Git", icon: "🔀", color: "#F05032", category: "DevOps" },
+  { name: "GitLab", icon: "🔀", color: "#F05032", category: "DevOps" },
   { name: "Linux", icon: "🐧", color: "#FCC624", category: "DevOps" },
   { name: "Docker", icon: "🐳", color: "#2496ED", category: "DevOps" },
   { name: "Cloudflare", icon: "☁️", color: "#F38020", category: "DevOps" },
@@ -48,7 +49,7 @@ const categories = ["All", "Frontend", "Backend", "Database", "DevOps"];
 const proficiencies = [
   { label: "Frontend", percent: 70, color: "#00D4AA" },
   { label: "Backend", percent: 85, color: "#7B8FF5" },
-  { label: "Database", percent: 75, color: "#F59E0B" },
+  { label: "Database", percent: 80, color: "#F59E0B" },
   { label: "DevOps / Cloud", percent: 60, color: "#EC4899" },
 ];
 
