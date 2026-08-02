@@ -48,6 +48,3 @@ next-env.d.ts
 /.clinerules/*
 AGENTS.md
 CLAUDE.md
-
-# package
-package-lock.json
