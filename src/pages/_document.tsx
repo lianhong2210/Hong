@@ -22,7 +22,7 @@ export default function MyDocument() {
         <link
           rel="icon"
           href={`${process.env.BASE_PATH || ""}/favicon.png`}
-          sizes="any"
+          type="image/png"
         />
       </Head>
       <body suppressHydrationWarning>
