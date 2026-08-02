@@ -6,7 +6,18 @@ import Hero from "../components/Hero";
 import Nav from "../components/Nav";
 import Skills from "../components/Skills";
 
+// ** Hooks
+import { useScrollSnap } from "../hooks/useScrollSnap";
+
+const SECTION_IDS = ["about", "experience", "education", "skills"];
+
 const Home = () => {
+  // Section-based scroll snapping:
+  // - normal scroll within each section
+  // - at the bottom + scroll down → slide to the next section's top
+  // - at the top + scroll up → slide to the previous section's top
+  useScrollSnap({ sectionIds: SECTION_IDS });
+
   return (
     <>
       <Nav />
