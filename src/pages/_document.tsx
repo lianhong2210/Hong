@@ -19,7 +19,11 @@ export default function MyDocument() {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href={`/favicon.png`} sizes="any" />
+        <link
+          rel="icon"
+          href={`${process.env.BASE_PATH || ""}/favicon.ico`}
+          sizes="any"
+        />
       </Head>
       <body suppressHydrationWarning>
         <Main />
