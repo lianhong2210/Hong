@@ -147,10 +147,10 @@ export default function Hero() {
               fontSize: { xs: "0.95rem", md: "1.05rem" },
             }}
           >
-            A passionate software developer with a knack for turning complex
-            problems into elegant, user-friendly solutions. I thrive at the
-            intersection of clean code and thoughtful design — building products
-            that are fast, accessible, and genuinely useful.
+            Building software that is scalable, maintainable, and user-centric.
+            As a Full Stack Software Engineer, I transform business requirements
+            into robust web applications through thoughtful architecture, clean
+            code, and modern development practices.
           </Typography>
           <Typography
             variant="body2"
@@ -162,8 +162,7 @@ export default function Hero() {
             }}
           >
             {`Based in Kuala Lumpur, Malaysia. When I'm not writing code, you'll
-            find me exploring new technologies, contributing to open-source
-            projects, or grabbing a cup of kopi at the local mamak stall.`}
+            find me exploring new technologies, continuously improving my software engineering skills, or grabbing a cup of kopi at the local mamak stall.`}
           </Typography>
 
           {/* Social icons */}
