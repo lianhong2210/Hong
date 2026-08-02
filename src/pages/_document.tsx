@@ -1,5 +1,7 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
+const basePath = process?.env?.NODE_ENV === "development" ? "" : "/Hong";
+
 export default function MyDocument() {
   return (
     <Html>
@@ -21,19 +23,19 @@ export default function MyDocument() {
         />
         <link
           rel="icon"
-          href={`${process.env.BASE_PATH || ""}/favicon-32x32.png`}
+          href={`${basePath}}/favicon-32x32.png`}
           type="image/png"
           sizes="32x32"
         />
         <link
           rel="icon"
-          href={`${process.env.BASE_PATH || ""}/favicon-16x16.png`}
+          href={`${basePath}/favicon-16x16.png`}
           type="image/png"
           sizes="16x16"
         />
         <link
           rel="apple-touch-icon"
-          href={`${process.env.BASE_PATH || ""}/apple-touch-icon.png`}
+          href={`${basePath}/apple-touch-icon.png`}
           sizes="180x180"
         />
       </Head>
