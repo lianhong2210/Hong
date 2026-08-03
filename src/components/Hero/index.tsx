@@ -161,8 +161,11 @@ export default function Hero() {
               fontSize: "0.9rem",
             }}
           >
-            {`Based in Kuala Lumpur, Malaysia. When I'm not writing code, you'll
-            find me exploring new technologies, continuously improving my software engineering skills, or grabbing a cup of kopi at the local mamak stall.`}
+            {
+              "Based in Kuala Lumpur, Malaysia. When I'm not writing code, you'll find me exploring new technologies, continuously improving my software engineering skills, or grabbing a cup of "
+            }
+            <em>Limau Ais</em>
+            {" at the local mamak stall."}
           </Typography>
 
           {/* Social icons */}
