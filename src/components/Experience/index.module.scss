@@ -1,4 +1,10 @@
 .section {
+  /* Compensate for html zoom: 0.8 so the section visually fills 100vh.
+     125vh × 0.8 = 100vh visual height. */
+  min-height: 125vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-top: 80px;
   padding-bottom: 112px;
   background: var(--bg-section-alt);

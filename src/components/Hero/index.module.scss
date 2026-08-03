@@ -1,5 +1,7 @@
 .section {
-  min-height: 100vh;
+  /* Compensate for html zoom: 0.8 so the section visually fills 100vh.
+     125vh × 0.8 = 100vh visual height. */
+  min-height: 125vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,7 +9,12 @@
   padding-top: 96px;
   padding-bottom: 80px;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--bg-default, #0a0f1e) 0%, var(--bg-section-alt, #111827) 60%, var(--bg-default, #0a0f1e) 100%);
+  background: linear-gradient(
+    160deg,
+    var(--bg-default, #0a0f1e) 0%,
+    var(--bg-section-alt, #111827) 60%,
+    var(--bg-default, #0a0f1e) 100%
+  );
 }
 
 .gridBg {
@@ -25,8 +32,9 @@
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
+  /* Enlarged to compensate for html zoom: 0.8 (750px × 0.8 = 600px visual). */
+  width: 750px;
+  height: 750px;
   border-radius: 50%;
   background: radial-gradient(
     circle,

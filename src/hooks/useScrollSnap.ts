@@ -43,14 +43,18 @@ export function useScrollSnap({
 
     if (sections.length === 0) return;
 
-    /** Index of the section the viewport is currently over. */
+    /**
+     * Index of the section the viewport is currently over.
+     * Uses getBoundingClientRect() so it works correctly with CSS `zoom`
+     * (offsetTop/offsetHeight are in the zoomed coordinate space, but
+     * window.innerHeight is not — getBoundingClientRect is consistent).
+     */
     const getActiveIndex = (): number => {
-      const scrollY = window.scrollY;
       let active = 0;
-      // Iterate in document order; the last section whose top is at/above
-      // the viewport's scroll position is the active one.
       for (let i = 0; i < sections.length; i++) {
-        if (sections[i].offsetTop <= scrollY + 1) {
+        const rect = sections[i].getBoundingClientRect();
+        // Section's top is at or above the viewport's top.
+        if (rect.top <= 1) {
           active = i;
         } else {
           break;
@@ -68,17 +72,16 @@ export function useScrollSnap({
       }, lockDuration);
     };
 
+    /** Section's top is at (or just below) the viewport's top within threshold. */
     const isAtTopOfSection = (section: HTMLElement): boolean => {
-      const sectionTop = section.offsetTop;
-      // Viewport's top is at (or above) the section's top within threshold.
-      return window.scrollY <= sectionTop + threshold;
+      const rect = section.getBoundingClientRect();
+      return rect.top >= -threshold;
     };
 
+    /** Section's bottom is at (or above) the viewport's bottom within threshold. */
     const isAtBottomOfSection = (section: HTMLElement): boolean => {
-      const sectionBottom = section.offsetTop + section.offsetHeight;
-      const viewportBottom = window.scrollY + window.innerHeight;
-      // Viewport's bottom is at (or below) the section's bottom within threshold.
-      return sectionBottom - viewportBottom <= threshold;
+      const rect = section.getBoundingClientRect();
+      return rect.bottom <= window.innerHeight + threshold;
     };
 
     // ---- Wheel (desktop mouse / trackpad) ----
