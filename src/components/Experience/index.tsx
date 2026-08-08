@@ -17,105 +17,15 @@ import {
 // ** Icons
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
-import CloudIcon from "@mui/icons-material/Cloud";
-import LaptopMacIcon from "@mui/icons-material/LaptopMac";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import StoreIcon from "@mui/icons-material/Store";
-import WorkIcon from "@mui/icons-material/Work";
 
 // ** Styles
 import styles from "./index.module.scss";
 
+// ** constant
+import { experiences } from "../../constant/experience";
+
 const SLIDE_DURATION = 10000;
-
-interface Experience {
-  company: string;
-  role: string;
-  period: string;
-  location: string;
-  type: string;
-  description: string;
-  achievements: string[];
-  tech: string[];
-  color: string;
-  bgColor: string;
-  icon: React.ReactNode;
-}
-
-const experiences: Experience[] = [
-  {
-    company: "TechNova Solutions",
-    role: "Senior Software Engineer",
-    period: "Jan 2023 — Present",
-    location: "Kuala Lumpur, MY",
-    type: "Full-time",
-    description:
-      "Leading the development of a cloud-native SaaS platform serving over 50,000 users across Southeast Asia. Architecting microservices and driving front-end modernisation efforts.",
-    achievements: [
-      "Reduced API response times by 60% via caching strategy redesign",
-      "Mentored a team of 4 junior developers and ran bi-weekly code reviews",
-      "Shipped 3 major product features that increased user retention by 22%",
-    ],
-    tech: ["Next.js", "TypeScript", "Go", "PostgreSQL", "Redis", "AWS"],
-    color: "#00D4AA",
-    bgColor: "rgba(0,212,170,0.09)",
-    icon: <CloudIcon />,
-  },
-  {
-    company: "Axiom Digital",
-    role: "Full Stack Developer",
-    period: "Jun 2021 — Dec 2022",
-    location: "Petaling Jaya, MY",
-    type: "Full-time",
-    description:
-      "Built and maintained e-commerce platforms and internal tools for retail clients. Collaborated with UX designers to translate wireframes into pixel-perfect, performant interfaces.",
-    achievements: [
-      "Delivered 8 client projects on time and within budget",
-      "Implemented CI/CD pipelines that cut deployment time by 70%",
-      "Led migration from REST to GraphQL for the core product API",
-    ],
-    tech: ["React", "Node.js", "GraphQL", "MongoDB", "Docker", "GCP"],
-    color: "#7B8FF5",
-    bgColor: "rgba(123,143,245,0.09)",
-    icon: <StoreIcon />,
-  },
-  {
-    company: "Byte Craft Studio",
-    role: "Junior Developer",
-    period: "Aug 2020 — May 2021",
-    location: "Shah Alam, MY",
-    type: "Full-time",
-    description:
-      "Joined as a fresh graduate and worked on cross-platform mobile apps and RESTful backend services. Gained deep hands-on experience in agile workflows and code review culture.",
-    achievements: [
-      "Built a customer loyalty app used by 10,000+ active users",
-      "Improved unit test coverage from 12% to 68%",
-      "Received 'Rising Star' award at the annual company review",
-    ],
-    tech: ["React Native", "Django", "Python", "Firebase", "Jest"],
-    color: "#F59E0B",
-    bgColor: "rgba(245,158,11,0.09)",
-    icon: <LaptopMacIcon />,
-  },
-  {
-    company: "FreeLance Hub",
-    role: "Freelance Web Developer",
-    period: "Jun 2019 — Jul 2020",
-    location: "Remote",
-    type: "Freelance",
-    description:
-      "Designed and developed websites for small businesses and startups across Malaysia and Singapore. Handled everything from discovery workshops to deployment and post-launch support.",
-    achievements: [
-      "Completed 15+ projects with consistent 5-star client ratings",
-      "Helped one startup secure seed funding with their MVP",
-      "Built a reusable component library to speed up delivery",
-    ],
-    tech: ["WordPress", "PHP", "HTML/CSS", "JavaScript", "Elementor"],
-    color: "#EC4899",
-    bgColor: "rgba(236,72,153,0.09)",
-    icon: <WorkIcon />,
-  },
-];
 
 export default function Experience() {
   const [active, setActive] = useState(0);
@@ -166,7 +76,7 @@ export default function Experience() {
     <Box id="experience" component="section" className={styles.section}>
       <Container maxWidth="lg">
         {/* Header */}
-        <Box sx={{ mb: 5 }}>
+        <Box sx={{ mb: 3 }}>
           <Typography className={styles.headerCaption} variant="caption">
             Work Experience
           </Typography>

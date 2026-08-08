@@ -168,7 +168,7 @@ export default function Education() {
     <Box id="education" component="section" className={styles.section}>
       <Container maxWidth="lg">
         {/* Header */}
-        <Box sx={{ mb: 5 }}>
+        <Box sx={{ mb: 3 }}>
           <Typography className={styles.headerCaption} variant="caption">
             Education & Certifications
           </Typography>
