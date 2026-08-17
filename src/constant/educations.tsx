@@ -25,8 +25,8 @@ export const educations: EducationTypes[] = [
     color: "#00D4AA",
     bgColor: "rgba(0,212,170,0.08)",
     icon: <SchoolIcon />,
-    image: "https://picsum.photos/seed/campus1/800/400",
-    imageAlt: "TARUC campus",
+    image: "/educations/taruc-gate.jpg",
+    imageAlt: "/educations/taruc-gate.jpg",
   },
   {
     institution: "Tunku Abdul Rahman University College",
@@ -45,7 +45,7 @@ export const educations: EducationTypes[] = [
     color: "#7B8FF5",
     bgColor: "rgba(123,143,245,0.08)",
     icon: <EmojiEventsIcon />,
-    image: "https://picsum.photos/seed/campus2/800/400",
+    image: "/educations/taruc-ictc.png",
     imageAlt: "TARUC campus",
   },
   //   {
