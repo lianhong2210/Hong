@@ -23,7 +23,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import styles from "./index.module.scss";
 
 // ** constant
-import { experiences } from "../../constant/experience";
+import { sectionIds } from "@/src/constant/sectionIds";
+import { experiences } from "../../constant/experiences";
 
 const SLIDE_DURATION = 10000;
 
@@ -73,7 +74,11 @@ export default function Experience() {
   const exp = experiences[active];
 
   return (
-    <Box id="experience" component="section" className={styles.section}>
+    <Box
+      id={sectionIds.experience}
+      component="section"
+      className={styles.section}
+    >
       <Container maxWidth="lg">
         {/* Header */}
         <Box sx={{ mb: 3 }}>

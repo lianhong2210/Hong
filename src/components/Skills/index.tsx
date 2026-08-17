@@ -17,6 +17,9 @@ import {
 // ** Styles
 import styles from "./index.module.scss";
 
+// ** constant
+import { sectionIds } from "@/src/constant/sectionIds";
+
 interface Skill {
   name: string;
   icon: string;
@@ -63,7 +66,7 @@ export default function Skills() {
       : skills.filter((s) => s.category === activeCategory);
 
   return (
-    <Box id="skills" component="section" className={styles.section}>
+    <Box id={sectionIds.skills} component="section" className={styles.section}>
       <Container maxWidth="lg">
         {/* Header */}
         <Box sx={{ mb: 3 }}>

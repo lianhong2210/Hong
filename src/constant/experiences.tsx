@@ -1,4 +1,4 @@
-// ** MUI Imports
+// ** Icons
 import DevicesIcon from "@mui/icons-material/Devices";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import WorkIcon from "@mui/icons-material/Work";

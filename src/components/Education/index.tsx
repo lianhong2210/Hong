@@ -17,116 +17,17 @@ import {
 
 // ** Icons
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import SchoolIcon from "@mui/icons-material/School";
 import StarIcon from "@mui/icons-material/Star";
-import VerifiedIcon from "@mui/icons-material/Verified";
-import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 
 // ** Styles
 import styles from "./index.module.scss";
 
+// ** constants
+import { sectionIds } from "@/src/constant/sectionIds";
+import { educations } from "../../constant/educations";
+
 const SLIDE_DURATION = 10000;
-
-interface Edu {
-  institution: string;
-  degree: string;
-  field: string;
-  period: string;
-  location: string;
-  grade: string;
-  description: string;
-  highlights: string[];
-  color: string;
-  bgColor: string;
-  icon: React.ReactNode;
-  image: string;
-  imageAlt: string;
-}
-
-const education: Edu[] = [
-  {
-    institution: "Tunku Abdul Rahman University College",
-    degree: "Bachelor of Information Technology (Honours)",
-    field: "Software Systems Development",
-    period: "JUN 2020 — JUL 2022",
-    location: "Kuala Lumpur, Malaysia",
-    grade: "CGPA 3.74 / 4.00",
-    description:
-      "Focused on software engineering principles, data structures & algorithms, and distributed systems. Final year project explored real-time collaborative document editing using CRDTs.",
-    highlights: [
-      "Dean's List — 6 consecutive semesters",
-      "Best Final Year Project — Faculty of CS & IT",
-      "Secretary, UM Computing Society (2018–2019)",
-    ],
-    color: "#00D4AA",
-    bgColor: "rgba(0,212,170,0.08)",
-    icon: <SchoolIcon />,
-    image: "https://picsum.photos/seed/campus1/800/400",
-    imageAlt: "TARUC campus",
-  },
-  {
-    institution: "INTI International College",
-    degree: "Diploma in Computer Science",
-    field: "Management Mathematics",
-    period: "MAY 2018 - APR 2020",
-    location: "Kuala Lumpur, Malaysia",
-    grade: "CGPA 3.76 / 4.00",
-    description:
-      "Completed a one-year foundation programme with a perfect GPA, earning a direct entry scholarship to the bachelor's degree programme.",
-    highlights: [
-      "Perfect GPA — Top Student Award",
-      "INTI Academic Excellence Scholarship recipient",
-      "Participated in nationwide coding olympiad, top 20",
-    ],
-    color: "#7B8FF5",
-    bgColor: "rgba(123,143,245,0.08)",
-    icon: <EmojiEventsIcon />,
-    image: "https://picsum.photos/seed/campus2/800/400",
-    imageAlt: "TARUC campus",
-  },
-  {
-    institution: "Amazon Web Services",
-    degree: "AWS Solutions Architect",
-    field: "Associate Certification",
-    period: "2022",
-    location: "Online / Remote",
-    grade: "Score: 892 / 1000",
-    description:
-      "Earned the AWS Solutions Architect – Associate certification, demonstrating proficiency in designing distributed systems and cloud cost optimisation on AWS.",
-    highlights: [
-      "Passed on first attempt with distinction",
-      "Covered EC2, S3, RDS, VPC, IAM, Lambda & more",
-      "Renewed annually with continuing education credits",
-    ],
-    color: "#F59E0B",
-    bgColor: "rgba(245,158,11,0.08)",
-    icon: <VerifiedIcon />,
-    image: "https://picsum.photos/seed/aws1/800/400",
-    imageAlt: "AWS Certification",
-  },
-  {
-    institution: "Coursera / Meta",
-    degree: "Professional Certificate",
-    field: "Meta Front-End Developer",
-    period: "2021",
-    location: "Online",
-    grade: "100% with Distinction",
-    description:
-      "A nine-course professional certificate programme covering React, advanced JavaScript, UX/UI principles, and front-end tooling, completed with distinction.",
-    highlights: [
-      "Completed 9 courses, ~240 hours of learning",
-      "Capstone: full restaurant booking web app in React",
-      "Certificate verified on Credly",
-    ],
-    color: "#EC4899",
-    bgColor: "rgba(236,72,153,0.08)",
-    icon: <WorkspacePremiumIcon />,
-    image: "https://picsum.photos/seed/meta1/800/400",
-    imageAlt: "Meta Front-End Certificate",
-  },
-];
 
 export default function Education() {
   const [active, setActive] = useState(0);
@@ -152,7 +53,7 @@ export default function Education() {
       const pct = Math.min((elapsed / SLIDE_DURATION) * 100, 100);
       setProgress(pct);
       if (pct >= 100) {
-        setActive((prev) => (prev + 1) % education.length);
+        setActive((prev) => (prev + 1) % educations.length);
         setProgress(0);
         startTimeRef.current = Date.now();
       }
@@ -162,10 +63,14 @@ export default function Education() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [progress]);
 
-  const edu = education[active];
+  const edu = educations[active];
 
   return (
-    <Box id="education" component="section" className={styles.section}>
+    <Box
+      id={sectionIds.educations}
+      component="section"
+      className={styles.section}
+    >
       <Container maxWidth="lg">
         {/* Header */}
         <Box sx={{ mb: 3 }}>
@@ -185,7 +90,7 @@ export default function Education() {
 
         {/* Dots */}
         <Box className={styles.dots}>
-          {education.map((_, i) => (
+          {educations.map((_, i) => (
             <Box
               key={i}
               onClick={() => goTo(i)}
@@ -408,7 +313,7 @@ export default function Education() {
 
         {/* Thumbnail strip */}
         <Box className={styles.thumbnailStrip}>
-          {education.map((e, i) => (
+          {educations.map((e, i) => (
             <Box
               key={i}
               onClick={() => goTo(i)}

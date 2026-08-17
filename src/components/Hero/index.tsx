@@ -8,17 +8,18 @@ import { useScroll } from "../../contexts/ScrollContext";
 import { Box, Container, Stack, Typography } from "@mui/material";
 
 // ** Redux
-import { useIsVisible } from "../../hooks/useIsVisible";
-import { setIsAboutNameVisible, setTypewriter } from "../../store/apps/common";
 import { useDispatch, useSelector } from "react-redux";
+import { useIsVisible } from "../../hooks/useIsVisible";
 import { RootState } from "../../store";
+import { setIsAboutNameVisible, setTypewriter } from "../../store/apps/common";
 
 // ** Styles
 import styles from "./index.module.scss";
 
 // ** Constant
-import { socials } from "../../constant/social";
+import { sectionIds } from "@/src/constant/sectionIds";
 import { roles } from "../../constant/roles";
+import { socials } from "../../constant/socials";
 
 export default function Hero() {
   // Redux
@@ -82,7 +83,7 @@ export default function Hero() {
   }, [isVisible, dispatch]);
 
   return (
-    <Box id="about" component="section" className={styles.section}>
+    <Box id={sectionIds.about} component="section" className={styles.section}>
       {/* Grid background */}
       <Box className={styles.gridBg} />
       {/* Glow */}

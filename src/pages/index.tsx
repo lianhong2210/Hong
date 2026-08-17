@@ -9,7 +9,10 @@ import Skills from "../components/Skills";
 // ** Hooks
 import { useScrollSnap } from "../hooks/useScrollSnap";
 
-const SECTION_IDS = ["about", "experience", "education", "skills"];
+// ** Constants
+import { sectionIds } from "../constant/sectionIds";
+
+const SECTION_IDS = Object.values(sectionIds);
 
 const Home = () => {
   // Section-based scroll snapping:
