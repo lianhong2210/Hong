@@ -26,7 +26,8 @@ import styles from "./index.module.scss";
 // ** constants
 import { sectionIds } from "@/src/constant/sectionIds";
 import { educations } from "../../constant/educations";
-import { basePath } from "@/src/constant/basePath";
+
+const basePath = process?.env?.NODE_ENV === "development" ? "" : "/Hong";
 
 const SLIDE_DURATION = 10000;
 
