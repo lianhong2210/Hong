@@ -24,6 +24,9 @@ const Home = () => {
 
   if (basePath === undefined) return null;
 
+  console.log("basePath:", basePath);
+  console.log("env:", process.env.NODE_ENV);
+
   return (
     <>
       <Nav />
