@@ -26,6 +26,7 @@ import styles from "./index.module.scss";
 // ** constants
 import { sectionIds } from "@/src/constant/sectionIds";
 import { educations } from "../../constant/educations";
+import { basePath } from "@/src/constant/basePath";
 
 const SLIDE_DURATION = 10000;
 
@@ -146,7 +147,7 @@ export default function Education() {
           >
             <CardMedia
               component="img"
-              image={edu.image}
+              image={basePath + edu.image}
               alt={edu.imageAlt}
               sx={{
                 width: "100%",
@@ -324,7 +325,7 @@ export default function Education() {
             >
               <Box
                 component="img"
-                src={e.image}
+                src={basePath + e.image}
                 alt={e.imageAlt}
                 sx={{
                   width: "100%",

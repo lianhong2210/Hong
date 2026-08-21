@@ -11,6 +11,7 @@ import { useScrollSnap } from "../hooks/useScrollSnap";
 
 // ** Constants
 import { sectionIds } from "../constant/sectionIds";
+import { basePath } from "../constant/basePath";
 
 const SECTION_IDS = Object.values(sectionIds);
 
@@ -20,6 +21,8 @@ const Home = () => {
   // - at the bottom + scroll down → slide to the next section's top
   // - at the top + scroll up → slide to the previous section's top
   useScrollSnap({ sectionIds: SECTION_IDS });
+
+  if (basePath === undefined) return null;
 
   return (
     <>

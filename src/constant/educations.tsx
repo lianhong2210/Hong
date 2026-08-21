@@ -7,8 +7,6 @@ import SchoolIcon from "@mui/icons-material/School";
 // ** Types
 import { EducationTypes } from "../types/educationTypes";
 
-const basePath = process.env.BASE_PATH ?? "";
-
 export const educations: EducationTypes[] = [
   {
     institution: "Tunku Abdul Rahman University College",
@@ -27,7 +25,7 @@ export const educations: EducationTypes[] = [
     color: "#00D4AA",
     bgColor: "rgba(0,212,170,0.08)",
     icon: <SchoolIcon />,
-    image: basePath + "/educations/taruc-gate.jpg",
+    image: "/educations/taruc-gate.jpg",
     imageAlt: "TARUC campus",
   },
   {
@@ -47,7 +45,7 @@ export const educations: EducationTypes[] = [
     color: "#7B8FF5",
     bgColor: "rgba(123,143,245,0.08)",
     icon: <EmojiEventsIcon />,
-    image: basePath + "/educations/taruc-ictc.png",
+    image: "/educations/taruc-ictc.png",
     imageAlt: "TARUC campus",
   },
   //   {
