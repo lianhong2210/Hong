@@ -1,6 +1,8 @@
+// ** Next
 import { Head, Html, Main, NextScript } from "next/document";
 
-const basePath = process?.env?.NODE_ENV === "development" ? "" : "/Hong";
+// ** Constants
+import { basePath } from "@/src/constant/basePath";
 
 export default function MyDocument() {
   return (
@@ -21,9 +23,16 @@ export default function MyDocument() {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        {/* Vector icon: stays sharp at any size in browsers that support it */}
         <link
           rel="icon"
-          href={`${basePath}}/favicon-32x32.png`}
+          href={`${basePath}/favicon.svg`}
+          type="image/svg+xml"
+        />
+        <link rel="icon" href={`${basePath}/favicon.ico`} sizes="48x48" />
+        <link
+          rel="icon"
+          href={`${basePath}/favicon-32x32.png`}
           type="image/png"
           sizes="32x32"
         />

@@ -24,10 +24,9 @@ import StarIcon from "@mui/icons-material/Star";
 import styles from "./index.module.scss";
 
 // ** constants
+import { basePath } from "@/src/constant/basePath";
 import { sectionIds } from "@/src/constant/sectionIds";
 import { educations } from "../../constant/educations";
-
-const basePath = process?.env?.NODE_ENV === "development" ? "" : "/Hong";
 
 const SLIDE_DURATION = 10000;
 

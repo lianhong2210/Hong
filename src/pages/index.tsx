@@ -15,10 +15,9 @@ import { sectionIds } from "../constant/sectionIds";
 const SECTION_IDS = Object.values(sectionIds);
 
 const Home = () => {
-  // Section-based scroll snapping:
-  // - normal scroll within each section
-  // - at the bottom + scroll down → slide to the next section's top
-  // - at the top + scroll up → slide to the previous section's top
+  // Section pager: one wheel/touch/key gesture = one step.
+  // - section taller than the viewport → step inside it until its bottom is reached
+  // - otherwise → slide to the next section's top (mirrored when scrolling up)
   useScrollSnap({ sectionIds: SECTION_IDS });
 
   return (
