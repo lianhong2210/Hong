@@ -5,11 +5,8 @@ const isDev = process.env.NODE_ENV === "development";
 const nextConfig: NextConfig = {
   output: "export", // static export for GitHub Pages
   devIndicators: false,
-  // Always define BASE_PATH explicitly (empty in dev, "/Hong" in production)
-  // so components can rely on a deterministic value in both modes.
-  env: {
-    BASE_PATH: isDev ? "" : "/Hong",
-  },
+  // Keep in sync with `src/constant/basePath.ts`, which components use to
+  // prefix public asset URLs.
   ...(!isDev && {
     basePath: "/Hong",
     assetPrefix: "/Hong/",
